@@ -1,11 +1,17 @@
 import pandas as pd
 import requests
 import time
-
+from dotenv import load_dotenv
+import os
 # --------------------------------------------------
 # 1. API Key 입력
 # --------------------------------------------------
-API_KEY = "D38780B8-7872-3C86-B3A2-E6394054FA51"
+load_dotenv()
+
+API_KEY = os.getenv("VWORLD_API_KEY")
+
+if not API_KEY:
+    raise ValueError("VWORLD API Key를 찾을 수 없습니다. .env 파일을 확인하세요.")
 
 # --------------------------------------------------
 # 2. 데이터 불러오기 (👉 네가 준 원본 CSV 사용)
